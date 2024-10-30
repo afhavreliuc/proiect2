@@ -1,0 +1,30 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model tabelcompanii {
+  DENUMIRE          String?
+  CUI               String? 
+  COD_INMATRICULARE String? @db.VarChar(50) @unique
+  EUID              String? @db.VarChar(50)
+  STARE_FIRMA       String?
+  ADRESA_COMPLETA   String?
+  ADR_TARA          String?
+  ADR_LOCALITATE    String?
+  ADR_JUDET         String?
+  ADR_DEN_STRADA    String?
+  ADR_DEN_NR_STRADA String?
+  ADR_BLOC          String?
+  ADR_SCARA         String?
+  ADR_ETAJ          String?
+  ADR_APARTAMENT    String?
+  ADR_COD_POSTAL    String?
+  ADR_SECTOR        String?
+  ADR_COMPLETARE    String?
+  id                BigInt  @id @default(autoincrement())
+}
