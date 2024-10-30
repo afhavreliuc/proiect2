@@ -2,18 +2,18 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import prisma from '../../lib/prisma';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-    const { searchValue, page } = req.query; // Added page parameter
+    const { searchValue, page } = req.query; 
   
     if (typeof searchValue !== 'string') {
       return res.status(400).json({ error: 'Invalid search value' });
     }
 
-    const currentPage = parseInt(page as string) || 0; // Get page from query params
-    const pageSize = 20; // Define page size
+    const currentPage = parseInt(page as string) || 0; 
+    const pageSize = 20; 
   
     try {
       const results = await prisma.tabelcompanii.findMany({
-        skip: currentPage * pageSize, // Implement pagination
+        skip: currentPage * pageSize, 
         take: pageSize,
         where: {
           OR: [
@@ -39,10 +39,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         },
       });
   
-      // Convert BigInt to string for serialization
       const serializedResults = results.map(result => ({
         ...result,
-        id: result.id.toString(), // Convert BigInt id to string
+        id: result.id.toString(), 
       }));
   
       res.status(200).json(serializedResults);

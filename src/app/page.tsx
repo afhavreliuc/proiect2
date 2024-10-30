@@ -1,10 +1,9 @@
-// page.tsx
 import prisma from '../lib/prisma'
 import UserList from './UserList'
 
 const Page = async ({ searchParams }: { searchParams: { page: string, search?: string } }) => {
-  const { page, search } = await searchParams; // Added search parameter
-  const currentPage = parseInt(page) || 0; // Get page from query params
+  const { page, search } = await searchParams; 
+  const currentPage = parseInt(page) || 0; 
   const pageSize = 20;
 
   // Construct the query filter based on the search term

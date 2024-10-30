@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 
 interface User {
   id: string;
-  // Add other user properties as needed
 }
 
 const UserList = ({ users, currentPage }: { users: User[], currentPage: number }) => {
